@@ -1,0 +1,13 @@
+version: 2
+
+seeds:
+  - name: raw_country_codes
+    description: >
+      This is a complete list of all country ISO codes as described
+      in the ISO 3166 international standard.
+    config:
+      column_types:
+        country: STRING
+        alpha2_code: STRING
+        alpha3_code: STRING
+        numeric_code: INTEGER

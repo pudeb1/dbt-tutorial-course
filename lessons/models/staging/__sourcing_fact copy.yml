@@ -1,0 +1,242 @@
+version: 2
+
+models:
+  - name: report_last_mile_delivery_billing_proposal_work_order_summary_view
+    description: >
+      This view contains the aggregated value of service income, service cost,
+      actual volume, actual weight and other values on different attributes
+      of the completed work orders for the current and previous financial year.
+      The view is a data source for the Sourcing Dashboard.
+    columns:
+      - name: work_order_completion_date
+        description: >
+              The date when the work order is completed. It could be work order delivered date
+              or work order returned date depending upon the flow
+      - name: work_order_country
+	    description: Two-letter country code (alpha-2) of the work order
+	  - name: access_key
+	    description: Access key for row level security
+      - name: service_product_number
+        description: Combination of item type and Service item number
+      - name: hub_unit
+        description: Hub unit
+      - name: postcode
+        description: Delivery postal code where the work order is delivered or returned
+      - name: indirect_indicator
+        description: Indicates direct or indirect delivery of the work order
+      - name: billing_proposal_type
+        description: Billing proposal model used for settling the work order
+      - name: supplier
+        description: Unique identifier of service provider
+      - name: sending_unit
+        description: Sending unit, combination of sending unit type and sending unit code
+      - name: selling_unit
+        description: Selling unit, combination of selling unit type and selling unit code
+      - name: shipment_type
+        description: Last mile shipment type
+      - name: billing_proposal_status
+        description: Billing proposal status
+      - name: effective_volume
+        description: Aggregated actual volume of the work order
+      - name: volume_unit
+        description: Unit of measure used in effective volume
+      - name: effective_weight
+        description: Aggregated actual weight of work order
+      - name: weight_unit
+        description: Unit of measure used in effective weight
+      - name: service_amount_net
+        description: Aggregated net service amount
+      - name: goods_amount_net
+        description: Aggregated net goods or article amount associated with the service
+      - name: sales_order_currency_code
+        description: Three-letter currency code (ISO 4217) for net service amount and goods amount
+      - name: effective_cost
+        description: Aggregated actual value of work order cost that supplier charges
+      - name: billing_proposal_currency
+        description: Three-letter currency code (ISO 4217) for effective cost
+      - name: number_of_delivered_work_order
+        description: Total number of work order delivered
+      - name: number_of_sales_order
+        description: Total number of sales order
+      - name: number_of_settled_work_order
+        description: Total number of work order settled
+
+  - name: last_mile_delivery_billing_proposal_work_order_summary
+    description: >
+      This table contains the aggregated value of service income, service cost,
+      actual volume, actual weight and other values on different attributes
+      of the completed work orders for the current and previous financial year.
+      The table is partitioned on work_order_completion_date
+    columns:
+      - name: work_order_completion_date
+        description: >
+              The date when the work order is completed. It could be work order delivered date
+              or work order returned date depending upon the flow
+      - name: country
+        description: Two-letter country code (alpha-2) of the work order
+      - name: service_product_number
+        description: Combination of item type and Service item number
+      - name: hub_unit
+        description: Hub unit
+      - name: postcode
+        description: Delivery postal code where the work order is delivered or returned
+      - name: indirect_indicator
+        description: Indicates direct or indirect delivery of the work order
+      - name: billing_proposal_type
+        description: Billing proposal model used for settling the work order
+      - name: supplier
+        description: Unique identifier of service provider
+      - name: sending_unit
+        description: Sending unit, combination of sending unit type and sending unit code
+      - name: selling_unit
+        description: Selling unit, combination of selling unit type and selling unit code
+      - name: shipment_type
+        description: Last mile shipment type
+      - name: billing_proposal_status
+        description: Billing proposal status
+      - name: effective_volume
+        description: Aggregated actual volume of the work order
+      - name: volume_unit
+        description: Unit of measure used in effective volume
+      - name: effective_weight
+        description: Aggregated actual weight of work order
+      - name: weight_unit
+        description: Unit of measure used in effective weight
+      - name: service_amount_net
+        description: Aggregated net service amount
+      - name: goods_amount_net
+        description: Aggregated net goods or article amount associated with the service
+      - name: sales_order_currency_code
+        description: Three-letter currency code (ISO 4217) for net service amount and goods amount
+      - name: effective_cost
+        description: Aggregated actual value of work order cost that supplier charges
+      - name: billing_proposal_currency
+        description: Three-letter currency code (ISO 4217) for effective cost
+      - name: number_of_delivered_work_order
+        description: Total number of work order delivered
+      - name: number_of_sales_order
+        description: Total number of sales order connected to delivered work order
+      - name: number_of_settled_work_order
+        description: Total number of work order settled
+
+  - name: last_mile_delivery_billing_proposal_work_order
+    description: >
+      This table contains last mile shipment, sales order and billing proposal
+      information connected to completed work order.
+    columns:
+      - name: country
+        description: Two-letter country code (alpha-2) of the work order
+      - name: work_order_number
+        description: Work order number as used in the source system
+      - name: last_mile_shipment
+        description: Information related to last mile shipment
+      - name: last_mile_shipment.work_order_region
+        description: The region code that the work order belongs to
+      - name: last_mile_shipment.work_order_creation_timestamp
+        description: The original creation time of the work order
+      - name: last_mile_shipment.service_product_number
+        description: Combination of item type and Service item number
+      - name: last_mile_shipment.supplier
+        description: Unique identifier of service provider
+      - name: last_mile_shipment.shipment_type
+        description: Shipment type
+      - name: last_mile_shipment.hub_unit
+        description: Hub unit
+      - name: last_mile_shipment.fuel_type
+        description: The fuel type used by the vehicle for completing the delivery service
+      - name: last_mile_shipment.postcode
+        description: Delivery postal code where the work order is delivered or returned
+      - name: last_mile_shipment.indirect_indicator
+        description: Whether the work order is a direct or indirect flow
+      - name: last_mile_shipment.work_order_completion_timestamp
+        description: >
+              The date when the work order is completed. It could be work order delivered date
+              or work order returned date depending upon the flow
+      - name: last_mile_shipment.delivery_method
+        description: Delivery method of the work order
+      - name: last_mile_shipment.sending_unit_type
+        description: Sending unit type
+      - name: last_mile_shipment.sending_unit_code
+        description: Sending unit code
+      - name: last_mile_shipment.selling_unit_type
+        description: Selling unit type
+      - name: last_mile_shipment.selling_unit_code
+        description: Selling unit code
+      - name: last_mile_shipment.effective_volume
+        description: Actual volume of the work order
+      - name: last_mile_shipment.volume_unit
+        description: Unit of measure used in effective volume
+      - name: last_mile_shipment.effective_weight
+        description: Actual weight of work order
+      - name: last_mile_shipment.weight_unit
+        description: Unit of measure used in effective weight
+      - name: last_mile_shipment.effective_cdu_quantity
+        description: Quantity of parcels/ customer delivery unit (CDU) in the work order
+      - name: last_mile_shipment.last_mile_shipment_work_order_business_key
+        description: Internal unique identifier to identify the last mile shipment record
+      - name: last_mile_shipment.work_order_identifier
+        description: Unique identifier of work order
+      - name: last_mile_shipment.global_work_order_identifier
+        description: Unique identifier of work order as stored in source system
+      - name: sales_order
+        description: Information related to sales order
+      - name: sales_order.isell_order_number
+        description: Order no as in iSell
+      - name: sales_order.order_creation_timestamp
+        description: The original creation timestamp of the order
+      - name: sales_order.order_type
+        description: The type of order
+      - name: sales_order.order_creation_method
+        description: Method of order creation
+      - name: sales_order.order_service_type
+        description: Order service type
+      - name: sales_order.order_currency_code
+        description: Three-letter currency code (ISO 4217) for the currency used in the sales order
+      - name: sales_order.service_amount_net
+        description: Net service amount
+      - name: sales_order.service_amount_gross
+        description: Gross service amount
+      - name: sales_order.goods_amount_net
+        description: Net goods or article amount associated with the service
+      - name: sales_order.goods_amount_gross
+        description: Gross goods or article amount associated with the service
+      - name: sales_order.order_id
+        description: Unique identifier of the order in source system
+      - name: sales_order.order_line_item_service_id
+        description: >
+              A unique identifier for the service provided in the source system. It consists of the hash of the order_id and
+              service_line_no combined
+      - name: billing_proposal
+        description: Information related to billing proposal
+      - name: billing_proposal.billing_proposal_type
+        description: Billing proposal type
+      - name: billing_proposal.business_flow_type
+        description: Identifying delivery type
+      - name: billing_proposal.billing_proposal_source_identifier
+        description: >
+              User-relevant identifier of billing proposal as stored in the
+              source system.
+      - name: billing_proposal.billing_proposal_creation_timestamp
+        description: The timestamp of billing proposal creation
+      - name: billing_proposal.billing_proposal_status
+        description: Billing proposal status
+      - name: billing_proposal.billing_proposal_currency
+        description: Three-letter currency code (ISO 4217)
+      - name: billing_proposal.estimated_cost
+        description: Work order cost when it was first rated
+      - name: billing_proposal.effective_cost
+        description: Actual value of work order cost that supplier charges
+      - name: billing_proposal.service
+        description: Delivery service type, e.g. 1-person, 2-person
+      - name: billing_proposal.route_id
+        description: Unique route identifier, available for route based work order
+      - name: billing_proposal.vehicle_type
+        description: Supplier's vehicle type, available for route based work order
+      - name: billing_proposal.zone_name
+        description: Zone name
+      - name: billing_proposal.billing_proposal_record_id
+        description: Internal unique identifier to identify the billing proposal record
+      - name: billing_proposal.billing_proposal_last_updated_timestamp
+        description: The timestamp when the billing proposal record was last updated
+      - name: bq_last_updated_timestamp
+        description: The timestamp when the record was last updated

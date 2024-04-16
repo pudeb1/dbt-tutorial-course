@@ -1,0 +1,487 @@
+version: 2
+
+models:
+  - name: report_country_dimension_view
+    description: Country dimension view
+    columns:
+      - name: country_business_key
+        description: Business key
+      - name: country_code
+        description: >
+          Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: country_name
+        description: Unique name of a Country
+      - name: currency_code
+        description: >
+          Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name
+        description: Currency name in english
+      - name: continent_code
+        description: Unique identifier of the Continent
+      - name: continent_name
+        description: Unique name of the Continent
+
+  - name: country_dimension
+    description: Country dimension entity
+    columns:
+      - name: country_business_key
+        description: Business key
+        tests:
+          - unique
+      - name: country_code
+        description: >
+          Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: country_name
+        description: Unique name of a Country
+      - name: currency_code
+        description: >
+          Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name
+        description: Currency name in english
+      - name: continent_code
+        description: Unique identifier of the Continent
+      - name: continent_name
+        description: Unique name of the Continent
+
+  - name: report_store_dimension_view
+    description: Store dimension view
+    columns:
+      - name: store_business_key
+        description: Business key
+      - name: customer_meeting_point_type
+        description: Customer meeting Point Type
+      - name: store_code
+        description: Store code
+      - name: store_name
+        description: Store name
+      - name: store_type_code
+        description: Unique identifier of a store type
+      - name: store_type_name
+        description: Unique Name of store type
+      - name: country_code
+        description: Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: country_name
+        description: Unique name of a country
+      - name: continent_code
+        description: Unique identifier of the continent
+      - name: continent_name
+        description: Unique name of the continent
+      - name: region_code
+        description: Code of a region
+      - name: region_name
+        description: Name of region
+      - name: postal_code
+        description: postal code
+      - name: longitude
+        description: Longitude
+      - name: latitude
+        description: Latitude
+
+  - name: customer_meeting_point_dimension
+    description: Customer meeting point entity
+    columns:
+      - name: customer_meeting_point_business_key
+        description: Business key
+        tests:
+          - unique
+      - name: customer_meeting_point_type
+        description: Customer meeting point type
+      - name: customer_meeting_point_code
+        description: Customer meeting point code
+      - name: customer_meeting_point_name
+        description: Customer meeting point name
+      - name: store_type_code
+        description: Unique identifier of a store type
+      - name: store_type_name
+        description: Unique Name of store type
+      - name: country_code
+        description: Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: country_name
+        description: Unique name of a country
+      - name: continent_code
+        description: Unique identifier of the continent
+      - name: continent_name
+        description: Unique name of the continent
+      - name: region_code
+        description: Code of a region
+      - name: region_name
+        description: Name of region
+      - name: postal_code
+        description: postal code
+      - name: longitude
+        description: Longitude
+      - name: latitude
+        description: Latitude
+
+  - name: report_calendar_dimension_view
+    description: calendar dimension view
+    columns:
+      - name: calendar_business_key
+        description: Business key, String value of the date
+      - name: day_date
+        description: Date value of the day
+      - name: day_name_long
+        description: Long name of the day
+      - name: day_position_in_ikea_week
+        description: Position of the day in IKEA calendar week
+      - name: ikea_week_number
+        description: >
+          Number of the IKEA calendar week in format YYYYWW
+      - name: ikea_week_label
+        description: Label of the IKEA calendar week
+      - name: fiscal_weeklet_number
+        description: Number of the IKEA fiscal weeklet
+      - name: fiscal_weeklet_position
+        description: >
+          Position of the IKEA fiscal weeklet in IKEA fiscal year
+      - name: fiscal_weeklet_label
+        description: Label of the IKEA fiscal weeklet
+      - name: fiscal_month_number
+        description: Number of the IKEA fiscal month
+      - name: fiscal_month_label
+        description: Label of the IKEA fiscal month
+      - name: iso_month_name_short
+        description: >
+          Short name of the month in the ISO calendar year
+      - name: iso_month_name_long
+        description: >
+          Long name of the month in the ISO calendar year
+      - name: fiscal_month_position_in_fiscal_year
+        description: >
+          Position of the IKEA fiscal month in IKEA fiscal year
+      - name: fiscal_year_number
+        description: Number of the IKEA fiscal year
+      - name: fiscal_year_label
+        description: Name of the IKEA fiscal year
+      - name: first_date_of_fiscal_year
+        description: >
+          Date value of the first day in the IKEA fiscal year
+
+  - name: calendar_dimension
+    description: calendar dimension entity
+    columns:
+      - name: calendar_business_key
+        description: Business key, String value of the date
+        tests:
+          - unique
+      - name: day_date
+        description: Date value of the day
+      - name: day_name_long
+        description: Long name of the day
+      - name: day_position_in_ikea_week
+        description: Position of the day in IKEA calendar week
+      - name: ikea_week_number
+        description: >
+          Number of the IKEA calendar week in format YYYYWW
+      - name: ikea_week_label
+        description: Label of the IKEA calendar week
+      - name: fiscal_weeklet_number
+        description: Number of the IKEA fiscal weeklet
+      - name: fiscal_weeklet_position
+        description: >
+          Position of the IKEA fiscal weeklet in IKEA fiscal year
+      - name: fiscal_weeklet_label
+        description: Label of the IKEA fiscal weeklet
+      - name: fiscal_month_number
+        description: Number of the IKEA fiscal month
+      - name: fiscal_month_label
+        description: Label of the IKEA fiscal month
+      - name: iso_month_name_short
+        description: >
+          Short name of the month in the ISO calendar year
+      - name: iso_month_name_long
+        description: >
+          Long name of the month in the ISO calendar year
+      - name: fiscal_month_position_in_fiscal_year
+        description: >
+          Position of the IKEA fiscal month in IKEA fiscal year
+      - name: fiscal_year_number
+        description: Number of the IKEA fiscal year
+      - name: fiscal_year_label
+        description: Name of the IKEA fiscal year
+      - name: first_date_of_fiscal_year
+        description: >
+          Date value of the first day in the IKEA fiscal year
+
+  - name: report_currency_exchange_rate_dimension_view
+    description: Currency exchange rate dimension view
+    columns:
+      - name: currency_exchange_rate_business_key
+        description: Business key
+      - name: fiscal_year_number
+        description: four digit year number
+      - name: currency_code_from
+        description: Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name_from
+        description: Name of currency in english
+      - name: currency_code_to
+        description: Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name_to
+        description: Name of currency in english
+      - name: exchange_rate
+        description: Exchange rates
+      - name: currency_exchange_rate_type
+        description: Type of exchange rates
+      - name: currency_exchange_rate_description
+        description: Description of the exchange rate
+
+  - name: currency_exchange_rate_dimension
+    description: Currency exchange rate dimension entity
+    columns:
+      - name: currency_exchange_rate_business_key
+        description: Business key
+        tests:
+          - unique
+      - name: fiscal_year_number
+        description: four digit year number
+      - name: currency_code_from
+        description: Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name_from
+        description: Name of currency in english
+      - name: currency_code_to
+        description: Three letter abbreviation uniquely identifying currency for a country
+      - name: currency_name_to
+        description: Name of currency in english
+      - name: exchange_rate
+        description: Exchange rates
+      - name: currency_exchange_rate_type
+        description: Type of exchange rates
+      - name: currency_exchange_rate_description
+        description: Description of the exchange rate
+
+  - name: item_dimension
+    description: Item dimension entity
+    columns:
+      - name: item_business_key
+        description: Business key
+        tests:
+          - unique
+      - name: item_number
+        description: Item number
+      - name: item_type
+        description: >
+          Item Type is a three-letter abbreviation for various types of Items
+          (eg. ART = Saleable Article, SGR = Sales Group)
+      - name: item_name
+        description: The name of the item in official English
+      - name: product_area_number
+        description: Product Area (PA) number
+      - name: product_area_name
+        description: Product Area (PA) name
+      - name: account_code
+        description: >
+          Account code (C = Customer order payment, G= Gift voucher,
+          O = Other, R, W = Without Calc). Used for classification of Item that
+          constitute Statistical Net Sales, Service Sales, etc
+      - name: product_range_area_number
+        description: >
+          Product Range Area (PRA) number
+      - name: product_range_area_name
+        description: Product Range Area (PRA)  name
+      - name: home_furnishing_business_number
+        description: Home Furnishing Business (HFB) number
+      - name: home_furnishing_business_name
+        description: Home furnishing business (HFB) name
+
+  - name: report_services_dimension_view
+    description: Services dimension view
+    columns:
+      - name: services_business_key
+        description: Business key
+      - name: item_number
+        description: Item number
+      - name: item_type
+        description: >
+          Item Type is a three-letter abbreviation for various types of Items
+          (eg. ART = Saleable Article, SGR = Sales Group)
+      - name: item_name
+        description: The name of the item in official English
+      - name: product_area_number
+        description: Product Area (PA) number
+      - name: product_area_name
+        description: Product Area (PA) name
+      - name: account_code
+        description: >
+          Account code (C = Customer order payment, G= Gift voucher,
+          O = Other, R, W = Without Calc). Used for classification of Item that
+          constitute Statistical Net Sales, Service Sales, etc
+      - name: product_range_area_number
+        description: >
+          Product Range Area (PRA) number
+      - name: product_range_area_name
+        description: Product Range Area (PRA)  name
+      - name: home_furnishing_business_number
+        description: Home Furnishing Business (HFB) number
+      - name: home_furnishing_business_name
+        description: Home furnishing business (HFB) name
+
+  - name: business_unit_dimension
+    description: >
+      Business unit for Local Service Centre (LSC) and Customer Distribution Centre (CDC)
+    columns:
+      - name: business_unit_business_key
+        description: Business key
+        tests:
+          - unique
+      - name: country_code
+        description: >
+          Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: business_unit_type
+        description: >
+          Business unit type; Local Service Centre (LSC) or
+          Customer Distribution Centre (CDC)
+      - name: business_unit_code
+        description: Business unit code
+      - name: business_unit_name
+        description: Business unit name
+
+  - name: report_local_service_centre_dimension_view
+    description: >
+      View for Local Service Centre (LSC)
+    columns:
+      - name: local_service_centre_business_key
+        description: Business key for local service centre
+      - name: country_code
+        description: >
+          Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: local_service_centre_code
+        description: Local service centre code
+      - name: local_service_centre_name
+        description: Local service centre name
+
+  - name: report_customer_distribution_centre_dimension_view
+    description: >
+      View for Customer Distribution Centre (CDC)
+    columns:
+      - name: customer_distribution_centre_business_key
+        description: >
+          Business key for customer distribution centre
+      - name: country_code
+        description: >
+          Two letter abbreviation (ISO code) uniquely identifying a country
+      - name: customer_distribution_centre_code
+        description: Customer distribution centre code
+      - name: customer_distribution_centre_name
+        description: Customer distribution centre name
+
+  - name: report_service_provider_dimension_view
+    description: >
+      View for "Service Provider" events published by CAHUB (Capacity Hub)
+    columns:
+      - name: identifier
+        data_type: STRING
+        description: Unique identifier for 'Service Provider' objects in UUID format
+      - name: provider_identifier
+        data_type: STRING
+        description: ID of the 'Service Provider'
+      - name: provider_name
+        data_type: STRING
+        description: Name of the 'Service Provider'
+      - name: comment
+        data_type: STRING
+        description: Comment to add context to the 'Service Provider'
+      - name: created_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was created
+      - name: last_updated_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was last updated
+      - name: deleted_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was deleted
+      - name: deleted_indicator
+        data_type: BOOLEAN
+        description: Flag to indicate if this object is deleted and not useful anymore
+
+  - name: service_provider_dimension
+    description: >
+      "Service Provider" events published by CAHUB (Capacity Hub)
+    columns:
+      - name: identifier
+        data_type: STRING
+        description: Unique identifier for 'Service Provider' objects in UUID format
+      - name: created_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was created
+      - name: last_updated_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was last updated
+      - name: deleted_timestamp
+        data_type: TIMESTAMP
+        description: The UTC timestamp the Service Provider object was deleted
+      - name: provider_name
+        data_type: STRING
+        description: Name of the 'Service Provider'
+      - name: provider_identifier
+        data_type: STRING
+        description: ID of the 'Service Provider'
+      - name: comment
+        data_type: STRING
+        description: Comment to add context to the 'Service Provider'
+      - name: deleted_indicator
+        data_type: BOOLEAN
+        description: Flag to indicate if this object is deleted and not useful anymore
+
+  - name: report_users_dimension_view
+    description: >
+      View for user profile data enriched with business logic for access identifier
+    columns:
+	  - name: email
+	    data_type: STRING
+        description: >
+          Employee or consultant email address.
+      - name: employment_status
+	    data_type: STRING
+        description: >
+          Indicates the employment status of the co-worker. Options are `Active` or `Withdrawn`.
+      - name: country_code
+	  	data_type: STRING
+        description: >
+          Iso Alpha-2 country code indicating co-worker's country of employment.
+      - name: cost_center_code
+        description: >
+          Alphanumeric code indicating co-worker's Ingka cost center.
+      - name: cost_center_name
+	    data_type: STRING
+        description: >
+          Name of the co-worker's Ingka cost center.
+      - name: business_unit_name
+	    data_type: STRING
+        description: >
+          Co-worker's business unit name.
+      - name: business_unit_code
+	    data_type: STRING
+        description: >
+          Alphanumeric code uniquely identifying the co-worker's business unit.
+	  - name: cost_center_name
+	    data_type: STRING
+        description: >
+          Co-worker's cost center name.
+      - name: cost_center_code
+	    data_type: STRING
+        description: >
+          Alphanumeric code identifying the cost center code(s) associated with the co-worker's.
+	  - name: access_id
+	  	data_type: STRING
+	    description: >
+          Access identier that represents the row level access scope of the user.
+
+  - name: report_user_access_model_bridge_view
+    description: >
+       Relationship or bridge between the "report_users_dimension_view" sourced from people domain data and last mile cost fact table
+    +tags:
+      - "user_access"
+      - "daily"
+    columns:
+      - name: access_id
+	  	data_type: STRING
+        description: >
+          Access identier that represents the row level access scope of the user.
+      - name: access_key
+	  	data_type: STRING
+        description: >
+          "Referes row level access key from corresponding fact"
+      - name: source
+	  	data_type: STRING
+        description: >
+          Name of the fact associated with the access key

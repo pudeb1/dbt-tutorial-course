@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: user_access
+    schema: prepared
+    description: >
+      People data used for automated row-level security with renamed columns and country codes converted from ISO alpha-3 to
+      alpha-2.
+    +tags:
+      - "user_access"
+      - "daily"
+    columns:
+      - name: email
+        description: >
+          Employee or consultant email address.
+      - name: employment_status
+        description: >
+          Indicates the employment status of the co-worker. Options are `Active` or `Withdrawn`.
+      - name: country_code
+        description: >
+          Iso Alpha-2 country code indicating co-worker's country of employment.
+      - name: cost_center_code
+        description: >
+          Alphanumeric code indicating co-worker's Ingka cost center.
+      - name: cost_center_name
+        description: >
+          Name of the co-worker's Ingka cost center.
+      - name: business_unit_name
+        description: >
+          Co-worker's business unit name.
+      - name: business_unit_code
+        description: >
+          Alphanumeric code uniquely identifying the co-worker's business unit.
+	  - name: cost_center_name
+        description: >
+          Co-worker's cost center name.
+      - name: cost_center_code
+        description: >
+          Alphanumeric code identifying the cost center code(s) associated with the co-worker.

@@ -1,0 +1,90 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'last_mile_cost_data_product'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'last_mile_cost_data_product'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["data_quality_tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+vars:
+  default_minimum_timestamp: "2000-01-01 00:00:00.000+00:00"  # default minimum timestamp used for initial loading of the data
+  people_source_stage: "ingka-people-data-prod" # We were told to use the prod environment for dev,stage and prod.
+  people_source_prod: "ingka-people-data-prod"
+  people_source_dev: "ingka-people-data-prod"
+  people_data_dataset_prod: "PDAHSD_186"
+  people_data_dataset_stage: "PDAHSD_186"
+  people_data_dataset_dev: "PDAHSD_186"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+models:
+  elementary:
+    +schema: data_observability_elementary
+  last_mile_cost_data_product:
+    +persist_docs:
+      relation: true
+      columns: true
+    derived_sourcing:
+      +schema: derived_sourcing
+      +full_refresh: false
+    derived_common:
+      +schema: derived_common
+      +full_refresh: false
+    prepared:
+      billing_proposal:
+        +schema: prepared
+        +full_refresh: false
+        +materialized: incremental
+      row_level_security:
+        +schema: prepared
+        +full_refresh: false
+        +materialized: view
+    raw:
+      billing_proposal:
+        +schema: raw
+        +full_refresh: false
+        +materialized: incremental
+    landing:
+      billing_proposal:
+        +schema: landing
+        billing_proposal_validation:
+          +materialized: incremental
+        billing_proposal_line_item_work_order_validation:
+          +materialized: incremental
+        billing_proposal_line_item_service_order_validation:
+          +materialized: incremental
+        billing_proposal_line_item_route_validation:
+          +materialized: incremental
+
+seeds:
+  last_mile_cost_data_product:
+    raw:
+      zone_allocation:
+        +schema: raw
+        +persist_docs:
+          relation: true
+          columns: true
+
+
+tests:
+  +severity: warn
